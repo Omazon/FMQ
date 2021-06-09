@@ -1,0 +1,290 @@
+@mixin input {
+    height: 60px;
+    width: 100%;
+    max-width: 380px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+.step:not(.step5){
+    .el-date-editor.el-input, .el-date-editor.el-input__inner{
+        width: 94% !important;
+    }    
+}
+@mixin fas {
+    font-size: 50px;
+    color: $blue;
+}
+@for $i from 20 through 40 {
+    .font-size-#{$i}{
+        font-size: #{$i}px;
+    }
+    .mt-#{$i}{
+        margin-top: #{$i}px;
+    }
+    .mb-#{$i}{
+        margin-bottom: #{$i}px;
+    }
+    .mr-#{$i}{
+        margin-right: #{$i}px;
+    }
+}
+.el-year-table{
+    display: table;
+}
+.text-align-center{
+    text-align: center;
+}
+.font-weight-700{
+    font-weight: 700;
+}
+.d-flex{
+    display: flex;
+    &.justify-center{
+        justify-content: center;
+    }
+    &.flex-column{
+        flex-direction: column;
+    }
+    &.align-items-center{
+        align-items: center;
+    }
+    &.flex-wrap{
+        flex-wrap: wrap;
+    }
+}
+@font-face {
+    font-family: museo;
+    src: url("/wp-content/plugins/wizard-step/images/mainfont.ttf") format("truetype");
+  }
+$blue-sky: #008CDF;
+$blue: #1B5299;
+.blue{
+    color: $blue; 
+}
+.blue-sky{
+    color: $blue-sky;
+}
+.blue-complete{
+    i{
+        &:first-child{
+            color: $blue-sky;
+        }
+        color: $blue;
+    }
+}
+.d-none{
+    display: none;
+}
+label,span,p,.el-form-item__error{
+    font-family: museo;
+}
+.el-form-item.custom{
+    label{
+        font-size: 20px;
+        color: $blue-sky;
+        font-weight: 700;
+        margin-left: 20px;
+    }
+    .el-input__inner{
+        @include input();
+    }
+}
+.oma-icon-list {
+    display: flex;
+    justify-content: space-between;
+    .icons{
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+        position: relative;
+        .fa-stack-1x{
+            font-size: 20px;
+        }
+        .fa-stack-2x{
+            font-size: 40px
+        }
+        .fa-stack {
+            display: flex;
+            align-items: center;
+            height: 1em;
+        }
+        .far.fa-circle, .fa-check-circle{
+            background-color: white;
+        }
+        &.blue-complete:not(:last-child)::after{
+            background-color: $blue;
+        }
+        &:not(:last-child):after{
+            left: 50%;
+            background-color: #ccc;
+            content: "";
+            display: block;
+            height: 5px;
+            position: absolute;
+            width: 100%;
+            top: 65px;
+            z-index: -1;
+            transition: background-color 1s;
+        }
+    }
+}
+.oma-content .step.step3 .el-radio.is-bordered, 
+.oma-content .step.stepcar .el-radio.is-bordered{
+	border:none !important;
+}
+.oma-content .step.step3 .el-radio,
+.oma-content .step.stepcar .el-radio{
+	transition: box-shadow 0.4s ease-in-out;
+}
+.oma-content .step.step3 .el-radio:hover,
+.oma-content .step.step3 .el-radio.is-checked, 
+.oma-content .step.stepcar .el-radio:hover, 
+.oma-content .step.stepcar .el-radio.is-checked{
+	transition: box-shadow 0.4s ease-in-out;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.oma-content .step.step3 .el-radio.is-checked, .oma-content .step.stepcar .el-radio.is-checked {
+  border-color: #008CDF;
+}
+.oma-content{
+    margin-bottom: 100px;
+    .title{
+        font-size: 30px;
+        font-weight: 700;
+        margin: 50px 0;
+        & + img {
+            margin-bottom: 50px;
+        }
+    }
+    .step{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &.step1{
+            .oma-navigation{
+                justify-content: center;
+            }
+            .el-input__inner{
+                margin-top: 20px;
+                @include input();
+                &::placeholder{
+                    font-size: 20px;
+                }
+            }
+        }
+        &.step2{
+            display: flex;
+            justify-content: center;
+            .el-radio-group{
+                display: flex;
+                flex-direction: column;
+                .el-radio-button{
+                    &.is-active{
+                        i{
+                            color: white !important;
+                        }
+                    }
+                    .el-radio-button__inner{
+                        @include input();
+                        &:hover{
+                            background-color: $blue-sky;
+                            color: white;
+                            i{
+                                color: white
+                            }
+                        }
+                        i{
+                            color: $blue-sky;
+                            margin-left: 30px;
+                            margin-right: 50px;
+                        }
+                        display: flex;
+                        align-items: center;
+                        margin: 9px 0;
+                    }
+                }
+            }
+        }
+        &.step3,&.stepcar{
+            .el-radio:not(.type){
+                height: 100%;
+                border-radius: 20px;
+                border: solid 3px #707070;
+                padding-bottom: 20px;
+                margin: 15px !important;
+                &.is-checked{
+                    border-color: $blue-sky;
+                }
+                .el-radio__label{
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+                .el-radio__input{
+                    position: absolute;
+                    right: 20px;
+                }
+            }
+        }
+        &.step4,&.step5,&.stepcarinfo{
+            .el-row{
+                .el-col:first-child{
+                    text-align: center;
+                }
+            }
+            .el-form{
+                width: 100%;
+                .fas{
+                    @include fas();
+                }
+            }
+        }
+    }
+    .final-step{
+        .el-progress{
+            width: 25vmax;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+.oma-navigation {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 380px;
+    justify-content: space-between;
+    display: flex;
+    button{
+        width: 50%;
+        span{
+            font-size: 16px;
+        }
+    }
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  .el-radio__label {
+      font-size: 20px;
+      img {
+          margin: auto;
+      }
+  }
+  .step5{
+      i{
+          width: 70px;
+      }
+      .el-date-editor.el-input, .el-date-editor.el-input__inner{
+          width: 270px;
+          max-width: 100%;
+      }
+  }
